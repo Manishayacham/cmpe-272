@@ -1,24 +1,9 @@
 ---
 # Deploy a simple web server
 
-- hosts: webservers
-  remote_user: ubuntu
-  become: yes
-  become_method: sudo
-  vars:
-    - MyMessage: "Hello World from Chargers"
+- hosts: localhost
   tasks:
-    - name: Ensure apache installed
-      apt: name=apache2 update_cache=yes state=latest
-    - name: Create html folder if not existing
-      file:
-        path: /var/www/html/
-        state: directory
-    - name: Copy html file to web server
-      template:
-        src: ./index.html.j2
-        dest: /var/www/html/index.html
-        owner: ubuntu
-        group: ubuntu
-        mode: 0755
+    - name: Print message
+      debug: msg="Hello from Ansible!!"
+ 
 
